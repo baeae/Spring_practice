@@ -1,0 +1,32 @@
+package kosta.view;
+
+import kosta.service.CustomerService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainApp {
+    public static void main(String[] args) {
+
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("aplicationContext.xml");
+        System.out.println("--------------------");
+
+        CustomerService service = context.getBean("service", CustomerService.class);
+
+        int re = service.select();
+        System.out.println("re = "+ re);
+
+        System.out.println("**************************");
+        //String result = service.selectById("jang");
+        String result = service.selectById("jang");
+        System.out.println("result = " + result);
+
+        System.out.println("**************************");
+        service.update("jang", "희정");
+
+
+
+
+
+    }
+}
